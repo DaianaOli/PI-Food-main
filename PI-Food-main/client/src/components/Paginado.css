@@ -1,0 +1,37 @@
+.paginado{
+    display: flex;
+    flex-direction: row;
+    padding: 1px;
+    background-color: rgba(247, 242, 242, 0.438);
+    margin-top: 2%;
+    align-content: space-around;
+    justify-content: center;
+ 
+}
+
+.num{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    font-weight: bold;
+    color: rgb(24, 24, 24);
+}
+.container {
+    cursor: pointer;
+    background: #0b0c0c;
+    border-radius: 15px;
+    font-style: italic;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 9px 23px 9px 23px;
+    text-decoration: none;
+    position:relative;
+    border: #ffffff 1px solid;
+}

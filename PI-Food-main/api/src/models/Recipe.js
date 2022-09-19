@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('recipe', {
     id : {
-      type: DataTypes.UUID,        // este tipo de dato es para que no se repita con el de la API 
+      type: DataTypes.UUID,        
       defaultValue: DataTypes.UUIDV4,    
       allowNull: false,
       primaryKey : true
@@ -24,11 +24,10 @@ module.exports = (sequelize) => {
     analyzedInstructions:{
       type : DataTypes.TEXT,
     },
-    createdInDb:{                                  // esta propiedad la van a tenr solo las comidas que esten en la BD
-      type : DataTypes.BOOLEAN,                    // por lo que es mas facil buscarlas 
+    createdInDb:{                                 
+      type : DataTypes.BOOLEAN,                    
       allowNull: false,
       defaultValue: true
     }
-
   });
 };

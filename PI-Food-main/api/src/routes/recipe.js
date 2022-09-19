@@ -14,7 +14,7 @@ router.post('/', async (req,res,next) => {
     if(!title || !summary) {
         return res.status(400).send('Please, insert a title and a summary to continue!');
     }
-    console.log(title);
+
 try{let createRecipe = await Recipe.create({
        // id,     
         title,

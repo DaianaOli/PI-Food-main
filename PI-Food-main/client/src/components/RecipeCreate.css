@@ -1,0 +1,106 @@
+.bkgs{
+    background-image: url('../images/create.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position:fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    align-items: center;
+    
+}
+.containers {
+    display: flex;
+    justify-content:flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-top: 80px;
+    width: 80%;
+    height: 80%;
+    background-color: rgba(68, 66, 66, 0.5);
+    color: black;
+    text-decoration: underline;
+
+}
+
+.error{
+ color: rgb(10, 10, 10);
+ background-color: rgb(236, 19, 19);
+ display: flex;
+ border-radius: 10px;
+ padding: 10px 15px 10px 15px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    background-color:rgba(233, 233, 222, 0.548) ;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.55);
+    margin: 20px;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+
+    
+}
+.correct{
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    font-family: italic;
+    color: #000000;
+    font-size: 17px;
+    background: #abd648;
+    padding: 10px 30px 10px 30px;
+    text-decoration: none;
+
+}
+.correct:hover {
+    background: #e0e055;
+    background-image: -webkit-linear-gradient(top, #f2f2b1, #f3ff99);
+    background-image: -moz-linear-gradient(top, #f2f2b1, #f3ff99);
+    background-image: -ms-linear-gradient(top, #f2f2b1, #f3ff99);
+    background-image: -o-linear-gradient(top, #f2f2b1, #f3ff99);
+    background-image: linear-gradient(to bottom, #f2f2b1, #f3ff99);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background: #f2f2b1;
+    background-image: -webkit-linear-gradient(top, #f2f2b1, #f3ff99);
+    background-image: -moz-linear-gradient(top, #f2f2b1, #f3ff99);
+    background-image: -ms-linear-gradient(top, #f2f2b1, #f3ff99);
+    background-image: -o-linear-gradient(top, #f2f2b1, #f3ff99);
+    background-image: linear-gradient(to bottom, #f2f2b1, #f3ff99);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .types{
+    padding: 0.8px;    
+    font-family: italic;
+    display: inline-block;
+    font-size: 25px;
+    flex-direction: row;
+  }
+
+  .btnx{
+      background-color: red;
+      color: white;
+  }
+  .tipos{
+      display: flex;
+      flex-direction: row;
+  }
+  .adv{
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+  }

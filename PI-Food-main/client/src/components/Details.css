@@ -1,0 +1,140 @@
+.cont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+   
+
+}
+
+.dt{
+    background-image: url('../images/detail2.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.imga{
+    height: 6cm;
+    width: 8cm;
+    border-radius: 18px;
+    box-shadow: 4px 4px 10px 10px rgb(17, 17, 17);    
+}
+.resumen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+  
+}
+.type{
+    background-color: rgba(231, 227, 227, 0.637);
+    padding: 10px;
+    box-shadow: 4px 4px 10px 10px rgba(241, 238, 238, 0.55);    
+    font-family: italic;
+    font-weight: bold;
+    font-size: 20px;
+    border:#0b0c0c 2px solid;
+}
+.title{
+    color: rgb(7, 7, 7);
+    font-style: italic;
+    position:relative;
+    font-size: 30px;
+    background-color: rgba(231, 227, 227, 0.637);
+
+}
+
+.btn {
+    cursor: pointer;
+    background: #0b0c0c;
+    border-radius: 15px;
+    font-style: italic;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 9px 23px 9px 23px;
+    text-decoration: none;
+    position:relative;
+    margin-top: 3%;
+  }
+  
+  .btn:hover {
+    background: #f2f2b1;
+    background-image: -webkit-linear-gradient(top, #f2f2b1, #f3ff99);
+    background-image: -moz-linear-gradient(top, #f2f2b1, #f3ff99);
+    background-image: -ms-linear-gradient(top, #f2f2b1, #f3ff99);
+    background-image: -o-linear-gradient(top, #f2f2b1, #f3ff99);
+    background-image: linear-gradient(to bottom, #f2f2b1, #f3ff99);
+    text-decoration: none;
+    cursor: pointer;
+  }
+ 
+
+  .carg{
+    background-image: url('../images/grilled-beef-steak-on-the-dark-wooden-surface.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+}
+/* From uiverse.io by @G4b413l */
+.spinner {
+    margin-top: 20%;
+    margin-right: 40%;
+    margin-left: 40%;
+    height: 50px;
+    width: max-content;
+    font-size: 40px;
+    font-weight: 600;
+    font-family: monospace;
+    letter-spacing: 1em;
+    color: #0f0f0f;
+    filter: drop-shadow(0 0 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+   
+   .spinner span {
+    animation: loading6454 1.75s ease infinite;
+   }
+   
+   .spinner span:nth-child(2) {
+    animation-delay: 0.25s;
+   }
+   
+   .spinner span:nth-child(3) {
+    animation-delay: 0.5s;
+   }
+   
+   .spinner span:nth-child(4) {
+    animation-delay: 0.75s;
+   }
+   
+   .spinner span:nth-child(5) {
+    animation-delay: 1s;
+   }
+   
+   .spinner span:nth-child(6) {
+    animation-delay: 1.25s;
+   }
+   
+   .spinner span:nth-child(7) {
+    animation-delay: 1.5s;
+   }
+   
+   @keyframes loading6454 {
+    0%, 100% {
+     transform: translateY(0);
+    }
+   
+    50% {
+     transform: translateY(-10px);
+    }
+   }
