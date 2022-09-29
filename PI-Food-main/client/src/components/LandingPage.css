@@ -16,8 +16,9 @@
     font-size: 115px;
     background-color: rgba(110, 110, 110, 0.534);
     border: #ffffff 2px solid;
-    text-shadow: rgb(248, 248, 245) 2px 2px 2px;
+    text-shadow: rgb(14, 13, 13) 2px 2px 2px;
     margin-top: 8%;
+    -webkit-text-stroke: #e8e8e8 1px;
 }
 
   .my{
@@ -70,6 +71,7 @@
     position: relative;
     font-weight: 1000;
     font-size: 17px;
+    
     -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
     box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
     transition: all 250ms;
@@ -98,3 +100,4 @@
    .button:hover::before {
     width: 100%;
    }
+

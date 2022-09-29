@@ -11,42 +11,41 @@ export default function Detail (props){
   const dispatch = useDispatch() 
   useEffect (() => {
     if(id){
-       dispatch(getRecipesById(id))
-       }
+      dispatch(getRecipesById(id))
+      }
     return () => {
       dispatch({type: 'GET_BY_ID', payload: {}})
     }
     }, [dispatch,id])
- const detailsstate = useSelector((state) => state.details)
- 
+  const detailsstate = useSelector((state) => state.details)
+
+
   return (
       <div className="cont">
-       
-     { 
-       detailsstate.length > 0 ? 
-       
-       <div className='dt'> 
-           <Link to='/home'><button className='btn'>Back to Home </button> </Link>
-           <h1 className='title'> {detailsstate[0].title} </h1>
-           <img className='imga' src={detailsstate[0].img ? detailsstate[0].img :'https://st.depositphotos.com/1036708/2191/i/600/depositphotos_21918797-stock-photo-knife-and-fork-with-plate.jpg'}/>
-           <div className='resumen'>
-           <h5 className='type'>Summary: {detailsstate[0].summary.replace(/(<([^>]+)>)/gi, "")}</h5>
-           <h3 className='type' >Type Diet: {detailsstate[0].typeDiets.map(t =>(
+
+    { 
+      detailsstate.length > 0 ? 
+      
+      <div className='dt'> 
+          {/* <button className='put' onClick={()=> dispatch({type: 'PUT_RECIPES' , payload: detailsstate})}>Editar</button> */}
+          <h1 className='title'> {detailsstate[0].title} </h1>
+          <img className='imga' src={detailsstate[0].img ? detailsstate[0].img :'https://st.depositphotos.com/1036708/2191/i/600/depositphotos_21918797-stock-photo-knife-and-fork-with-plate.jpg'} alt='img not found'/>
+          <div className='resumen'>
+          <h5 className='type'>Summary: {detailsstate[0].summary.replace(/(<([^>]+)>)/gi, "")}</h5>
+          <h3 className='type' >Type Diet: {detailsstate[0].typeDiets.map(t =>(
             <li>{t.name}</li>
-           ))
+          ))
             } </h3>
             <h5 className='type'>Steps:
-           <ol>{ Array.isArray(detailsstate[0].analyzedInstructions) ? detailsstate[0].analyzedInstructions.map(e => e.steps.map(f => (
-           <li>{f.step}</li>))) : detailsstate[0].analyzedInstructions }</ol></h5>
-           <h4 className='type'>Dish Type: {detailsstate[0].dishTypes ? detailsstate[0].dishTypes.map(d => d.name) :'dish type not found'  }</h4>
-           
-           <h5 className='type'>HealthScore: {detailsstate[0].healthScore}</h5>
-           
-       </div> 
-       </div>: 
-       <div className="carg">
-       
-       <div className="spinner">
+          <ol>{ Array.isArray(detailsstate[0].analyzedInstructions) ? detailsstate[0].analyzedInstructions.map(e => e.steps.map(f => (
+          <li>{f.step}</li>))) : detailsstate[0].analyzedInstructions.split('|').map(step => <li>{step}</li> ) }</ol></h5>
+          <h4 className='type'>Dish Type: {detailsstate[0].dishTypes ? detailsstate[0].dishTypes.map(d => d.name) :'dish type not found'  }</h4>
+          
+          <h5 className='type'>HealthScore: {detailsstate[0].healthScore}</h5>
+          <Link to='/home'><button className='btn'>Back to Home </button> </Link>
+      </div> 
+      </div>: 
+      <div className="spinner">
         <span>L</span>
         <span>O</span>
         <span>A</span>
@@ -54,8 +53,7 @@ export default function Detail (props){
         <span>I</span>
         <span>N</span>
         <span>G</span>
-       </div>
-       </div>
+      </div>
     }
         </div>
     )

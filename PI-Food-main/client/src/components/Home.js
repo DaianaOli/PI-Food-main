@@ -2,7 +2,7 @@ import React from "react"
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getRecipes , filterRecipesByTypeDiet , orderByName , orderByPuntuation,getRecipesByName} from "../actions.js/index.js";
+import { getRecipes , filterRecipesByTypeDiet , orderByName , orderByPuntuation,getRecipesByName,} from "../actions.js/index.js";
 import Card from "./Card";
 import Paginado from "./Paginado";
 import './Home.css'
@@ -11,17 +11,18 @@ export default function Home () {
 const dispatch = useDispatch();
 const allRecipes = useSelector((state) => state.recipes ) 
 
-
-
-const[search,setSearch] =useState('')                  // este es para el searchBar                                    
-const[orden,setOrden] =useState('')                                             // |             
-const[order,setOrder] =useState('')                                             //_             
-const[currentPage,setCurrentPage] =useState(1)                                  // |             
-const[recipesPerPage,setrecipesPerPage]=useState(9)                             // |
+const[search,setSearch] =useState('')             // este es para el searchBar  
+// eslint-disable-next-line                                  
+const[orden,setOrden] =useState('')
+// eslint-disable-next-line
+const[order,setOrder] =useState('')
+const[currentPage,setCurrentPage] =useState(1)     
+   // eslint-disable-next-line
+const[recipesPerPage,setrecipesPerPage]=useState(9)
 const indexLastRecipe = currentPage * recipesPerPage                            // | --> esto es para el paginado
 const indexFirstRecipe = indexLastRecipe - recipesPerPage                       // |
 const currentRecipes = allRecipes.slice(indexFirstRecipe,indexLastRecipe)       // |
-
+//  console.log(allRecipes)
 
 const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
@@ -76,7 +77,7 @@ return (
     <div className='search'>
      <form onSubmit={(e) => {handleSubmit(e)}}> {/* este es para hacer enter y que funcione */}
 
-    <input type='text' placeholder='search by name...' value={search} onChange={(e) => {handleInputName(e)}} className='input'></input>
+    <input  type='text' placeholder='search by name...' value={search} onChange={(e) => {handleInputName(e)}} className='input'></input>
     <button  type='submit' className='btnsearch'>search</button>
     </form>
     
@@ -92,6 +93,7 @@ return (
                 </div>
                 <div>
                 <select  onChange={e => handlePuntuation(e)} className='select'>
+                    <option value="">Order for healthScore</option>
                     <option value="menormayor">lowest to highest score</option>
                     <option value="mayormenor">highest to lowest score</option>
                     <option value='cincuenta'>over 50</option>
@@ -119,6 +121,7 @@ return (
 
     <div className='paginado'> 
             <Paginado
+            key='paginado'
             recipesPerPage = {recipesPerPage}
             allRecipes = {allRecipes.length}
             paginado= {paginado}
@@ -129,16 +132,20 @@ return (
             { 
             currentRecipes?.map( e => {
                 return (
-                    
+                    <div>
                     <Link to={'/recipes/' + e.id}>
-                    <Card title={e.title} img={e.img}  
+                    <Card 
+                    title={e.title} 
+                    img={e.img}  
                     typeDiets={e.typeDiets} 
-                    key={e.id}/>
+                    key='id'/>
+                   
                     </Link>
-                    
+                        {/* <button onClick={() => dispatch(deleteRecipes(e.id))}>Delete</button> */}
+                    </div>
                     )  
                 })      
-            }    
+            }
             </div> 
     </div>
 )

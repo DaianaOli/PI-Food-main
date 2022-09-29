@@ -13,8 +13,8 @@ of good eating and as an art requires the interaction of the five senses</p>
             <button className='button'>Go to the main page</button>
             </Link>
             <div className="my">
-            This page was created by <a href="https://www.linkedin.com/in/luz-daiana-olivares-/">Luz Daiana Olivares</a> 
-            </div>
-        </div>
-    )
+            This page was created by <a href="https://www.linkedin.com/in/luz-daiana-olivares-/" target="_blanck">Luz Daiana Olivares</a> 
+            </div> 
+        </div> 
+    ) 
 }

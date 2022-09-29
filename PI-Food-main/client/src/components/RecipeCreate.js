@@ -10,7 +10,6 @@ function controlForm (input){
     if(!input.title) errors.title= 'please put the title of the recipe'
     if(!input.summary) errors.summary= 'please put the summary of the recipe'
     if(input.healthScore<0 || input.healthScore>100 || !reg.test(input.healthScore)) errors.healthScore='put a healthScore between 0-100'
-    if(!input.analyzedInstructions) errors.analyzedInstructions='please put the analyzedInstructions of the recipe'
     if(!input.typeDiets) errors.typeDiets='please put the typeDiets of the recipe'
     return errors
 }
@@ -19,8 +18,10 @@ function controlForm (input){
 export default function CreateRecipe() {
     const dispatch = useDispatch()
     let listDiets = useSelector((state) => state.typediets )
-    console.log('esto es diet',listDiets);
     const [errors,setErrors]=useState({})      // este estado local es para, las validaciones(del formulario controlado)
+    const [step, setStep] = useState(1)        
+    const [listSteps, setListSteps] = useState([])  
+    const [stepDescription, setStepDescription] = useState('')
     const [input,setInput] = useState({
         title :'',
         summary:'',
@@ -33,6 +34,15 @@ export default function CreateRecipe() {
         dispatch(getTypeDiets())
         },[dispatch])
 
+    useEffect(() => {
+        const stepsString = listSteps.join('|')
+        setInput({
+            ...input,
+            analyzedInstructions :stepsString,
+        }) // eslint-disable-next-line
+    },[listSteps,]) 
+
+    
  function handleChange(e){
         setInput({
             ...input,
@@ -54,14 +64,17 @@ function handleSelect(e){
 function handleSubmit(e){
     e.preventDefault();
     dispatch(postRecipes(input))
-    alert('Congratulations you created a new recipe!')
-    setInput({
-        title :'',
-        summary:'',
-        healthScore:'',
-        analyzedInstructions:'',
-        typeDiets:[]
-    })
+    if(input.title && input.summary && input.healthScore && input.analyzedInstructions && input.typeDiets){
+        alert('recipe created')
+        setInput({
+            title :'',
+            summary:'',
+            healthScore:'',
+            analyzedInstructions:'',
+            typeDiets:[]
+        })
+    }
+    else alert('please fill all the fields')
 }
 function handleDelete(e){
     setInput({
@@ -70,6 +83,26 @@ function handleDelete(e){
     }) //este es para borrar algun tipe diet que haya elegido, va a creat un nuevo array con todos los que no sean
 }//    el elemento que le hice click
 
+function handleChangeStep(e){
+    setStepDescription(e.target.value)
+}
+
+
+function handleStep (e){
+    e.preventDefault();
+    if(stepDescription !== ''){
+        setListSteps([
+            ...listSteps,
+            stepDescription
+        ])
+        setStep(step + 1)
+        setStepDescription('')
+    }
+    else{
+        alert('please put a step')
+    }
+}
+console.log("input" ,input);
     return (
         <div className='bkgs'>
         <div className='containers'>
@@ -117,31 +150,28 @@ function handleDelete(e){
                     <input
                     type='text'
                     name='analyzedInstructions'
-                    value={input.analyzedInstructions}
-                    onChange={(e) => {handleChange(e)}} 
-                    />
-                        { errors.analyzedInstructions && (
-                        <p className='error'>{errors.analyzedInstructions}</p>
-                    ) }
+                    value={stepDescription}
+                    onChange={handleChangeStep} 
+                    /> <button onClick={handleStep} className='btn'>Add</button>
                 </div>
                 <select onChange={(e) => handleSelect(e)} className='select' >
                     {listDiets?.map((t) => {
                     
-                    return <option value={t}> {t} </option>
+                    return <option key={t} value={t}> {t} </option>
                     
                     })}
                 </select >
-                {errors.hasOwnProperty('title') || errors.hasOwnProperty('summary')|| errors.hasOwnProperty('healthScore') || errors.hasOwnProperty('analyzedInstructions') ?  <p className='adv'> please complete all the inputs to create your recipe</p> : <button type='submit' className='btn'> Create Recipe</button>  }
-               
+                {errors.hasOwnProperty('title') || errors.hasOwnProperty('summary')|| errors.hasOwnProperty('healthScore') ?  <p className='adv'> please complete all the inputs to create your recipe</p> : <button type='submit' className='btn'> Create Recipe</button>  }
+
             </form>
             
             {input.typeDiets.map(e => {
-               return(
-               <div >
+            return(
+            <div key='typeDiets' >
                     <h5 className='types'>{e}</h5>
                     <button className='btnx' onClick={() => handleDelete(e)}>X</button>
-                   
-                </div>
+
+            </div>
             )})}
         </div>
         </div>

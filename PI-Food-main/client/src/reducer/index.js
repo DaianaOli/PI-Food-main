@@ -96,33 +96,33 @@ function rootReducer (state=initialState, action) {
                 ...state ,
                 recipes : orderpunt
         }
-
-
         case 'GET_BY_NAME':
             return {
                 ...state,
                 recipes: action.payload,
-                      
             }
-
         case 'GET_BY_ID':
             return{
                 ...state,
                 details: action.payload
             }
-
         case 'POST_RECIPE':
                 return{
                     ...state,
                 }
-        
-        
         case 'GET_TYPE_DIETS':
             return {
                 ...state,
                 typediets : action.payload
             }        
-            
+        // case 'DELETE_RECIPE':
+        //     return{
+        //         ...state,
+        //     }
+        // case PUT_RECIPE:
+        //     return{
+        //         ...state,
+        //     }
         default:
             return state;
     }

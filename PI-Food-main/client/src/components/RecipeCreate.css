@@ -10,7 +10,7 @@
     position:fixed;
     display: flex;
     flex-direction: column;
-    justify-content:start;
+    justify-content:flex-start;
     align-items: center;
     
 }
@@ -30,7 +30,7 @@
 
 .error{
  color: rgb(10, 10, 10);
- background-color: rgb(236, 19, 19);
+ background-color: rgba(236, 19, 19, 0.603);
  display: flex;
  border-radius: 10px;
  padding: 10px 15px 10px 15px;
@@ -91,7 +91,7 @@
   }
 
   .btnx{
-      background-color: red;
+      background-color: rgba(255, 0, 0, 0.61);
       color: white;
   }
   .tipos{
@@ -99,7 +99,7 @@
       flex-direction: row;
   }
   .adv{
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.473);
     color: white;
     padding: 5px;
     border-radius: 5px;

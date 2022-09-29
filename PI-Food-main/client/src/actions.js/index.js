@@ -6,6 +6,7 @@ const ORDER_BY_PUNTUATION = 'ORDER_BY_PUNTUATION';
 const GET_BY_NAME = 'GET_BY_NAME';
 const GET_BY_ID = 'GET_BY_ID';
 const  GET_TYPE_DIETS = 'GET_TYPE_DIETS';
+// const DELETE_RECIPE = 'DELETE_RECIPE';
 
 
 export function getRecipes(){
@@ -42,14 +43,14 @@ export function orderByPuntuation (payload){
 }
 
 export function getRecipesByName (name){
-    
     return async function(dispatch){
-        var json = await axios.get(`http://localhost:3001/recipes?name=${name}`);
-    return dispatch( {
-        type : GET_BY_NAME,
-        payload: json.data
-    })
-}
+        await axios.get(`http://localhost:3001/recipes?name=${name}`)
+        .then((response) =>{
+            return dispatch({type: GET_BY_NAME, payload: response.data})
+           }).catch((error) =>{
+            alert("Recipe not found")
+           })
+    } 
 }
 
 export function getRecipesById (id){
@@ -67,7 +68,6 @@ export function getTypeDiets (){
     
     return async function(dispatch){
         var json = await axios.get(`http://localhost:3001/types`);
-         console.log(json.data);
         return dispatch( {
             type : GET_TYPE_DIETS,
             payload: json.data
@@ -81,5 +81,22 @@ export function postRecipes (payload){
         var json = await axios.post(`http://localhost:3001/recipe`,payload);
         return json
     }
-
 }
+
+// export function deleteRecipes (id){
+//     return async function(dispatch){
+//         var json = await axios.delete(`http://localhost:3001/recipe/${id}`);
+//         return dispatch({
+//             type : DELETE_RECIPE,
+//             payload: json.data
+//         })
+//     }
+    
+// }
+
+// export function putRecipes (id, payload){
+//     return async function(dispatch){
+//         var json = await axios.put(`http://localhost:3001/recipe/${id}`,payload);
+//         return json
+//     }
+// }

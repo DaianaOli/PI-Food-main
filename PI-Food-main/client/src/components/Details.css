@@ -6,15 +6,11 @@
     margin: 0 auto;
     width: 100%;
     height: 100%;
-   
-
-}
-
-.dt{
     background-image: url('../images/detail2.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
+
 .imga{
     height: 6cm;
     width: 8cm;
@@ -74,15 +70,15 @@
   }
  
 
-  .carg{
+  /* .carg{
     background-image: url('../images/grilled-beef-steak-on-the-dark-wooden-surface.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
     height: 100%;
-    width: 100%;
+    width: 100%; */
 
-}
+/* } */
 /* From uiverse.io by @G4b413l */
 .spinner {
     margin-top: 20%;
