@@ -8,19 +8,19 @@ const { API_KEY } = process.env;
 const getApiInfo = async () => {
     const apiUrl = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`)
 
-     const apiInfo = await apiUrl.data.results.map(e =>{
-         return {
-             id: e.id, 
-             title: e.title,
-             img: e.image,
-             typeDiets: e.diets.map((d)=> {return{name:d}}), // un array con los tipos de dieta de esa receta
-             dishTypes: e.dishTypes.map((d)=> {return{name:d}}), 
-             summary: e.summary,            
-             healthScore: e.healthScore,    
-             analyzedInstructions: e.analyzedInstructions
+      const apiInfo = await apiUrl.data.results.map(e =>{
+          return {
+              id: e.id, 
+              title: e.title,
+              img: e.image,
+              typeDiets: e.diets.map((d)=> {return{name:d}}), // un array con los tipos de dieta de esa receta
+              dishTypes: e.dishTypes.map((d)=> {return{name:d}}), 
+              summary: e.summary,            
+              healthScore: e.healthScore,    
+              analyzedInstructions: e.analyzedInstructions
             }
             
-     })
+    })
 
     return apiInfo
 }
@@ -42,7 +42,6 @@ const getAllRecipes = async () => {
     const apiInfo = await getApiInfo()
     const dbInfo = await getDBInfo()
     const allRecipes = [...apiInfo,...dbInfo]
-
     return allRecipes
 
 }
@@ -63,7 +62,6 @@ async function getAallRecipes(req, res) {
           },
         });
         return res.send(await Promise.all([...recipeApiInfo,...recipeBD])); 
-       
       } catch(err) {
         res.json({err})
         console.error(err);
@@ -93,12 +91,11 @@ async function getAallRecipes(req, res) {
         });
   
         const respuesta = await Promise.all(recipeBD.concat(recipeApi))
-        if(respuesta.length===0) res.send(await getAllRecipes())
-        return res.send(respuesta)                             
-      } catch(err) {
-        res.json({err})
-        console.error(err)
-    }
+        if(respuesta.length===0) res.status(404).send('No se encontraron recetas')
+        else res.status(200).send(respuesta)
+      } catch (err) {
+        console.error(err);
+      }
     }
   }
 
@@ -109,5 +106,5 @@ module.exports= {
     getAllRecipes,
     getDBInfo,
     getApiInfo,
-     getAallRecipes
+    getAallRecipes
 }
