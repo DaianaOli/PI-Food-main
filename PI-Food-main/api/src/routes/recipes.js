@@ -25,8 +25,7 @@ router.get('/:id',async (req,res) =>{
   else {
     try {
       if (id) {
-        let recipeId = await allRecipes.filter((el) => el.id === parseInt(id)
-        );
+        let recipeId = await allRecipes.filter((el) => el.id === parseInt(id));
         recipeId.length
           ? res.status(200).send(recipeId)
           : res.status(400).send("Not fuound");

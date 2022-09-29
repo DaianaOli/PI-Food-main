@@ -102,7 +102,7 @@ function handleStep (e){
         alert('please put a step')
     }
 }
-console.log("input" ,input);
+// console.log("input" ,input);
     return (
         <div className='bkgs'>
         <div className='containers'>

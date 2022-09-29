@@ -96,7 +96,7 @@ return (
                     <option value="">Order for healthScore</option>
                     <option value="menormayor">lowest to highest score</option>
                     <option value="mayormenor">highest to lowest score</option>
-                    <option value='cincuenta'>over 50</option>
+                    <option value='mayorcincuenta'>over 50</option>
                     <option value='menorcincuenta'>less than 50</option>
                     
                 </select>
@@ -138,7 +138,8 @@ return (
                     title={e.title} 
                     img={e.img}  
                     typeDiets={e.typeDiets} 
-                    key='id'/>
+                    key={e.id}
+                    />
                    
                     </Link>
                         {/* <button onClick={() => dispatch(deleteRecipes(e.id))}>Delete</button> */}

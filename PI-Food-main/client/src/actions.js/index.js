@@ -47,9 +47,9 @@ export function getRecipesByName (name){
         await axios.get(`http://localhost:3001/recipes?name=${name}`)
         .then((response) =>{
             return dispatch({type: GET_BY_NAME, payload: response.data})
-           }).catch((error) =>{
+            }).catch((error) =>{
             alert("Recipe not found")
-           })
+            })
     } 
 }
 
