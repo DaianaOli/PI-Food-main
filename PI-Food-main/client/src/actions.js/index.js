@@ -11,7 +11,7 @@ const DELETE_RECIPE = 'DELETE_RECIPE';
 
 export function getRecipes(){
      return async function(dispatch){
-         var json = await axios.get(`http://localhost:3001/recipes`);
+         var json = await axios.get(`/recipes`);
          return dispatch({
              type : GET_RECIPES,
              payload: json.data
@@ -44,7 +44,7 @@ export function orderByPuntuation (payload){
 
 export function getRecipesByName (name){
     return async function(dispatch){
-        await axios.get(`http://localhost:3001/recipes?name=${name}`)
+        await axios.get(`/recipes?name=${name}`)
         .then((response) =>{
             return dispatch({type: GET_BY_NAME, payload: response.data})
             }).catch((error) =>{
@@ -56,7 +56,7 @@ export function getRecipesByName (name){
 export function getRecipesById (id){
     
     return async function(dispatch){
-        var json = await axios.get(`http://localhost:3001/recipes/${id}`);
+        var json = await axios.get(`/recipes/${id}`);
     return dispatch( {
         type : GET_BY_ID,
         payload: json.data
@@ -67,7 +67,7 @@ export function getRecipesById (id){
 export function getTypeDiets (){
     
     return async function(dispatch){
-        var json = await axios.get(`http://localhost:3001/types`);
+        var json = await axios.get(`/types`);
         return dispatch( {
             type : GET_TYPE_DIETS,
             payload: json.data
@@ -78,14 +78,14 @@ export function getTypeDiets (){
 
 export function postRecipes (payload){
     return async function(dispatch){
-        var json = await axios.post(`http://localhost:3001/recipe`,payload);
+        var json = await axios.post(`/recipe`,payload);
         return json
     }
 }
 
 export function deleteRecipes (id){
     return async function(dispatch){
-        var json = await axios.delete(`http://localhost:3001/recipe/${id}`);
+        var json = await axios.delete(`/recipe/${id}`);
         return dispatch({
             type : DELETE_RECIPE,
             payload: json.data
