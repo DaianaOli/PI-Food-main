@@ -2,7 +2,7 @@ import React from "react"
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getRecipes , filterRecipesByTypeDiet , orderByName , orderByPuntuation,getRecipesByName,} from "../actions.js/index.js";
+import { getRecipes , filterRecipesByTypeDiet , orderByName , orderByPuntuation,getRecipesByName, deleteRecipes} from "../actions.js/index.js";
 import Card from "./Card";
 import Paginado from "./Paginado";
 import './Home.css'
@@ -63,6 +63,15 @@ function handleInputName (e){
         setSearch(e.target.value)
 }
 
+// function capGluten(e){
+//     if(e.target.value === 'gluten free'){
+//     dispatch(filterRecipesByTypeDiet(e.target.value))
+//     }
+//     else {
+//         console.log ('error')
+//     }
+//     console.log(e.target.value)
+// }
 
 return (
     <div className='bkg'>
@@ -91,6 +100,7 @@ return (
                     <option value="des">descendent(Z-A)</option>
                 </select>
                 </div>
+                {/* <button onClick= {e=> capGluten(e)} value='gluten free'>Gluten Freen</button> */}
                 <div>
                 <select  onChange={e => handlePuntuation(e)} className='select'>
                     <option value="">Order for healthScore</option>
@@ -100,6 +110,7 @@ return (
                     <option value='menorcincuenta'>less than 50</option>
                     
                 </select>
+                
                 </div>
                 <div>
                 <select onChange={e => handleFilterTypeDiet(e)} className='select'>
@@ -141,8 +152,8 @@ return (
                     key={e.id}
                     />
                    
-                    </Link>
-                        {/* <button onClick={() => dispatch(deleteRecipes(e.id))}>Delete</button> */}
+                    </Link>{e.createdInDb ?  <button onClick={() => dispatch(deleteRecipes(e.id))}>Delete</button> : null}
+                       
                     </div>
                     )  
                 })      

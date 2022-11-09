@@ -6,7 +6,7 @@ const ORDER_BY_PUNTUATION = 'ORDER_BY_PUNTUATION';
 const GET_BY_NAME = 'GET_BY_NAME';
 const GET_BY_ID = 'GET_BY_ID';
 const  GET_TYPE_DIETS = 'GET_TYPE_DIETS';
-// const DELETE_RECIPE = 'DELETE_RECIPE';
+const DELETE_RECIPE = 'DELETE_RECIPE';
 
 
 export function getRecipes(){
@@ -83,16 +83,16 @@ export function postRecipes (payload){
     }
 }
 
-// export function deleteRecipes (id){
-//     return async function(dispatch){
-//         var json = await axios.delete(`http://localhost:3001/recipe/${id}`);
-//         return dispatch({
-//             type : DELETE_RECIPE,
-//             payload: json.data
-//         })
-//     }
+export function deleteRecipes (id){
+    return async function(dispatch){
+        var json = await axios.delete(`http://localhost:3001/recipe/${id}`);
+        return dispatch({
+            type : DELETE_RECIPE,
+            payload: json.data
+        })
+    }
     
-// }
+}
 
 // export function putRecipes (id, payload){
 //     return async function(dispatch){

@@ -31,16 +31,16 @@ router.post('/', async (req,res,next) => {
     }
 }});
 
-// router.delete('/:id',async (req,res) =>{
-//     const {id} = req.params
-//     try {
-//         let recipe = await Recipe.findByPk(id)
-//         await recipe.destroy()
-//         res.status(200).send('Recipe deleted')
-//     } catch (err) {
-//         res.status(400).send('Recipe not found')
-//     }
-// })
+router.delete('/:id',async (req,res) =>{
+    const {id} = req.params
+    try {
+        let recipe = await Recipe.findByPk(id)
+        await recipe.destroy()
+        res.status(200).send('Recipe deleted')
+    } catch (err) {
+        res.status(400).send('Recipe not found')
+    }
+})
 
 
 // router.put('/:id', async (req,res,next) => {
