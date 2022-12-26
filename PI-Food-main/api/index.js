@@ -27,7 +27,7 @@ var local='';
 if (process.env.PORT == 3001){
   local='http://localhost:3001';
 }else {
-  local= "https://pi-henry-foods.herokuapp.com";
+  local= "pi-countries-main-production-00f8.up.railway.app";
 }
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
