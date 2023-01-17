@@ -66,7 +66,7 @@ export default function Home() {
   function handleInputName(e) {
     setSearch(e.target.value);
   }
-  
+
   return (
     <div className="bkg">
       <div className="botones">
