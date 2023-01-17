@@ -147,7 +147,7 @@ export default function Home() {
       </div>
       <div className="cards">
         {currentRecipes.length > 1 ? (
-          currentRecipes.map((e) =>{
+          currentRecipes?.map((e) =>{
             return (
                 <div key={e.id}>
               <Link to={"/recipes/" + e.id}>
