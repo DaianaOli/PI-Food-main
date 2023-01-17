@@ -34,7 +34,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (allRecipes.length === 0) dispatch(getRecipes());
+    dispatch(getRecipes());
   }, [dispatch]);
 
   function handleOnClick(e) {
@@ -66,6 +66,7 @@ export default function Home() {
   function handleInputName(e) {
     setSearch(e.target.value);
   }
+  console.log(currentRecipes,"recetas actuales");
   return (
     <div className="bkg">
       <div className="botones">
@@ -154,7 +155,7 @@ export default function Home() {
             </div>
           ))
         ) : typeof currentRecipes === "string" ? (
-            <h1>Recipe not found</h1>
+            <h1>Recipes not found</h1>
             ) : (
                 <h1>Loading...</h1>
                 )}
