@@ -16,10 +16,8 @@ export function getRecipes(){
              type : GET_RECIPES,
              payload: json.data
          })
-     }
+        }
 }
-
-
 
 export function filterRecipesByTypeDiet (payload){
     return {

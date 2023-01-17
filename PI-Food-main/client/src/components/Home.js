@@ -9,8 +9,7 @@ import './Home.css'
 
 export default function Home () {
 const dispatch = useDispatch();
-const allRecipes = useSelector((state) => state.recipes ) 
-console.log(allRecipes)
+const allRecipes = useSelector((state) => state.allRecipes ) 
 
 const[search,setSearch] =useState('')             // este es para el searchBar  
 // eslint-disable-next-line                                  
@@ -22,15 +21,14 @@ const[currentPage,setCurrentPage] =useState(1)
 const[recipesPerPage,setrecipesPerPage]=useState(9)
 const indexLastRecipe = currentPage * recipesPerPage                            // | --> esto es para el paginado
 const indexFirstRecipe = indexLastRecipe - recipesPerPage                       // |
-const currentRecipes = allRecipes.slice(indexFirstRecipe,indexLastRecipe)       // |
-//  console.log(allRecipes)
+const currentRecipes = allRecipes.slice(indexFirstRecipe,indexLastRecipe)       
 
 const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
 }
 
 useEffect(() => {
-    dispatch(getRecipes())   
+    dispatch(getRecipes())
 },[dispatch]);
 
 function handleOnClick(e){
@@ -64,16 +62,6 @@ function handleInputName (e){
         setSearch(e.target.value)
 }
 
-// function capGluten(e){
-//     if(e.target.value === 'gluten free'){
-//     dispatch(filterRecipesByTypeDiet(e.target.value))
-//     }
-//     else {
-//         console.log ('error')
-//     }
-//     console.log(e.target.value)
-// }
-
 return (
     <div className='bkg'>
     <div className="botones">
@@ -85,23 +73,19 @@ return (
     </Link>
     </div>
     <div className='search'>
-     <form onSubmit={(e) => {handleSubmit(e)}}> {/* este es para hacer enter y que funcione */}
-
+     <form onSubmit={(e) => {handleSubmit(e)}}> 
     <input  type='text' placeholder='search by name...' value={search} onChange={(e) => {handleInputName(e)}} className='input'></input>
     <button  type='submit' className='btnsearch'>search</button>
     </form>
-    
     </div>
     <div className='filterC'>
         <button onClick = {e => handleOnClick(e)} className='refresh'> Refresh Recipes</button>                
                 <div className='filt'>
-
                 <select onChange={e => handleSort(e)} className='select'>
                     <option value="asc">ascendent(A-Z)</option>
                     <option value="des">descendent(Z-A)</option>
                 </select>
                 </div>
-                {/* <button onClick= {e=> capGluten(e)} value='gluten free'>Gluten Freen</button> */}
                 <div>
                 <select  onChange={e => handlePuntuation(e)} className='select'>
                     <option value="">Order for healthScore</option>
@@ -109,9 +93,7 @@ return (
                     <option value="mayormenor">highest to lowest score</option>
                     <option value='mayorcincuenta'>over 50</option>
                     <option value='menorcincuenta'>less than 50</option>
-                    
                 </select>
-                
                 </div>
                 <div>
                 <select onChange={e => handleFilterTypeDiet(e)} className='select'>
@@ -130,7 +112,6 @@ return (
                 </select>
                 </div>
     </div>
-
     <div className='paginado'> 
             <Paginado
             key='paginado'
@@ -139,10 +120,9 @@ return (
             paginado= {paginado}
             />
             </div>     
-
         <div className='cards'>
             { 
-            currentRecipes.length > 1 ? currentRecipes.map((e) => {
+            currentRecipes.length > 0 ? currentRecipes.map((e) => {
                 return (
                     <div key={e.id}>
                     <Link to={'/recipes/' + e.id}>
@@ -151,13 +131,14 @@ return (
                     img={e.img}  
                     typeDiets={e.typeDiets} 
                     />
-                   
                     </Link>{e.createdInDb ?  <button onClick={() => dispatch(deleteRecipes(e.id))}>Delete</button> : null}
-                       
                     </div>
                     )  
                 }) 
-              : <h1>Loading</h1>
+              : 
+              <div className="loading">
+                <h1>Loading...</h1>
+                </div>
             }
             </div> 
     </div>
