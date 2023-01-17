@@ -147,8 +147,9 @@ export default function Home() {
       </div>
       <div className="cards">
         {currentRecipes.length > 1 ? (
-          currentRecipes.map((e) => (
-            <div key={e.id}>
+          currentRecipes.map((e) =>{
+            return (
+                <div key={e.id}>
               <Link to={"/recipes/" + e.id}>
                 <Card title={e.title} img={e.img} typeDiets={e.typeDiets} />
               </Link>
@@ -158,7 +159,8 @@ export default function Home() {
                 </button>
               ) : null}
             </div>
-          ))
+            )
+        })
         ) : typeof currentRecipes === "string" ? (
             <h1>Recipes not found</h1>
             ) : (
