@@ -147,11 +147,11 @@ export default function Home() {
               <Link to={"/recipes/" + e.id}>
                 <Card title={e.title} img={e.img} typeDiets={e.typeDiets} />
               </Link>
-              {/* {e.createdInDb ? (
+              {e.createdInDb ? (
                 <button onClick={() => dispatch(deleteRecipes(e.id))}>
                   Delete
                 </button>
-              ) : null} */}
+              ) : null}
             </div>
           ))
         ) : typeof currentRecipes === "string" ? (
