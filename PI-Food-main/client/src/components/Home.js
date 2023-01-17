@@ -12,8 +12,8 @@ const dispatch = useDispatch();
 const allRecipes = useSelector((state) => state.recipes ) 
 
 useEffect(() => {
-    dispatch(getRecipes())   
-},[dispatch]);
+    dispatch(getRecipes()) 
+},[]);
 
 const[search,setSearch] =useState('')             // este es para el searchBar  
 // eslint-disable-next-line                                  
@@ -140,7 +140,7 @@ return (
             </div>     
 
         <div className='cards'>
-            {allRecipes? currentRecipes.map(e => {
+            {currentRecipes? currentRecipes.map(e => {
                 return (
                     <div key={e.id}>
                     <Link to={'/recipes/' + e.id}>
