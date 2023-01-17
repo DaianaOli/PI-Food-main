@@ -34,8 +34,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if(allRecipes.length === 0)
-    dispatch(getRecipes());
+    if (allRecipes.length === 0) dispatch(getRecipes());
   }, [dispatch]);
 
   function handleOnClick(e) {
@@ -67,7 +66,6 @@ export default function Home() {
   function handleInputName(e) {
     setSearch(e.target.value);
   }
-console.log(currentRecipes)
   return (
     <div className="bkg">
       <div className="botones">
@@ -142,25 +140,24 @@ console.log(currentRecipes)
         />
       </div>
       <div className="cards">
-        {Array.isArray(currentRecipes) ? currentRecipes.map((e) => {
-            return (
-              <div key={e.id}>
-                <Link to={"/recipes/" + e.id}>
-                  <Card title={e.title} img={e.img} typeDiets={e.typeDiets} />
-                </Link>
-                {e.createdInDb ? (
-                  <button onClick={() => dispatch(deleteRecipes(e.id))}>
-                    Delete
-                  </button>
-                ) : null}
-              </div>
-            );
-          })
-         : 
-          <div className="loading">
-            <h1>Loading...</h1>
-          </div>
-        }
+        {currentRecipes.length > 1 ? (
+          currentRecipes.map((e) => (
+            <div key={e.id}>
+              <Link to={"/recipes/" + e.id}>
+                <Card title={e.title} img={e.img} typeDiets={e.typeDiets} />
+              </Link>
+              {e.createdInDb ? (
+                <button onClick={() => dispatch(deleteRecipes(e.id))}>
+                  Delete
+                </button>
+              ) : null}
+            </div>
+          ))
+        ) : typeof currentRecipes === "string" ? (
+            <h1>Recipe not found</h1>
+            ) : (
+                <h1>Loading...</h1>
+                )}
       </div>
     </div>
   );
