@@ -12,7 +12,6 @@ const DELETE_RECIPE = 'DELETE_RECIPE';
 export function getRecipes(){
      return async function(dispatch){
          var json = await axios.get(`/recipes`);
-         console.log(json.data)
          return dispatch({
              type : GET_RECIPES,
              payload: json.data
