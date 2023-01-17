@@ -140,7 +140,7 @@ return (
             </div>     
 
         <div className='cards'>
-            {currentRecipes?.map(e => {
+            {currentRecipes.map((e) => {
                 return (
                     <div key={e.id}>
                     <Link to={'/recipes/' + e.id}>
@@ -154,8 +154,9 @@ return (
                        
                     </div>
                     )  
-            })}
-        </div>
+                })      
+            }
+            </div> 
     </div>
 )
 }
