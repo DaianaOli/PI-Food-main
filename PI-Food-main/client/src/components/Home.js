@@ -11,6 +11,10 @@ export default function Home () {
 const dispatch = useDispatch();
 const allRecipes = useSelector((state) => state.recipes ) 
 
+useEffect(() => {
+    dispatch(getRecipes())   
+},[dispatch]);
+
 const[search,setSearch] =useState('')             // este es para el searchBar  
 // eslint-disable-next-line                                  
 const[orden,setOrden] =useState('')
@@ -27,10 +31,6 @@ const currentRecipes = allRecipes.slice(indexFirstRecipe,indexLastRecipe)       
 const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
 }
-
-useEffect(() => {
-    dispatch(getRecipes())   
-},[dispatch]);
 
 function handleOnClick(e){
 e.preventDefault();
@@ -141,7 +141,7 @@ return (
 
         <div className='cards'>
             { 
-            currentRecipes?.map( e => {
+            currentRecipes.length > 0 ? currentRecipes.map( e => {
                 return (
                     <div key={e.id}>
                     <Link to={'/recipes/' + e.id}>
@@ -156,6 +156,7 @@ return (
                     </div>
                     )  
                 })      
+                : <h1>There are no recipes</h1>
             }
             </div> 
     </div>
