@@ -142,7 +142,7 @@ return (
 
         <div className='cards'>
             { 
-            currentRecipes?.map( e => {
+            currentRecipes.length > 1 ? currentRecipes.map((e) => {
                 return (
                     <div key={e.id}>
                     <Link to={'/recipes/' + e.id}>
@@ -156,7 +156,8 @@ return (
                        
                     </div>
                     )  
-                })      
+                }) 
+              : <h1>Loading</h1>
             }
             </div> 
     </div>
