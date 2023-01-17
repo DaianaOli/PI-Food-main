@@ -121,25 +121,26 @@ return (
             />
             </div>     
         <div className='cards'>
-            { 
-            currentRecipes.length > 0 ? currentRecipes.map((e) => {
-                return (
-                    <div key={e.id}>
-                    <Link to={'/recipes/' + e.id}>
-                    <Card 
-                    title={e.title} 
-                    img={e.img}  
-                    typeDiets={e.typeDiets} 
-                    />
-                    </Link>{e.createdInDb ?  <button onClick={() => dispatch(deleteRecipes(e.id))}>Delete</button> : null}
-                    </div>
-                    )  
-                }) 
-              : 
-              <div className="loading">
-                <h1>Loading...</h1>
-                </div>
-            }
+        {
+currentRecipes && currentRecipes.length > 0 ?
+currentRecipes.map((e) => {
+return (
+<div key={e.id}>
+<Link to={'/recipes/' + e.id}>
+<Card
+title={e.title}
+img={e.img}
+typeDiets={e.typeDiets}
+/>
+</Link>{e.createdInDb ? <button onClick={() => dispatch(deleteRecipes(e.id))}>Delete</button> : null}
+</div>
+)
+})
+:
+<div className="loading">
+<h1>Loading...</h1>
+</div>
+}
             </div> 
     </div>
 )
