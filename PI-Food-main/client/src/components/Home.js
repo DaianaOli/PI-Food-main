@@ -66,7 +66,7 @@ export default function Home() {
   function handleInputName(e) {
     setSearch(e.target.value);
   }
-  console.log(currentRecipes,"recetas actuales");
+  
   return (
     <div className="bkg">
       <div className="botones">
