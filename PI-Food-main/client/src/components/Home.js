@@ -143,13 +143,12 @@ return (
             { 
             currentRecipes?.map( e => {
                 return (
-                    <div>
+                    <div key={e.id}>
                     <Link to={'/recipes/' + e.id}>
                     <Card 
                     title={e.title} 
                     img={e.img}  
                     typeDiets={e.typeDiets} 
-                    key={e.id}
                     />
                    
                     </Link>{e.createdInDb ?  <button onClick={() => dispatch(deleteRecipes(e.id))}>Delete</button> : null}
