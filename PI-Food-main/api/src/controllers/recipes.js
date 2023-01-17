@@ -61,7 +61,8 @@ async function getAallRecipes(req, res) {
             },
           },
         });
-        return res.send(await Promise.all([...recipeApiInfo,...recipeBD])); 
+        const recipes = await Promise.all(recipeBD.concat(recipeApiInfo))
+        return res.send(recipes)
       } catch(err) {
         res.json({err})
         console.error(err);
