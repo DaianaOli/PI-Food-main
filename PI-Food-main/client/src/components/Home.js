@@ -10,10 +10,7 @@ import './Home.css'
 export default function Home () {
 const dispatch = useDispatch();
 const allRecipes = useSelector((state) => state.recipes ) 
-
-useEffect(() => {
-    dispatch(getRecipes()) 
-},[]);
+console.log(allRecipes)
 
 const[search,setSearch] =useState('')             // este es para el searchBar  
 // eslint-disable-next-line                                  
@@ -31,6 +28,10 @@ const currentRecipes = allRecipes.slice(indexFirstRecipe,indexLastRecipe)       
 const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
 }
+
+useEffect(() => {
+    dispatch(getRecipes())   
+},[dispatch]);
 
 function handleOnClick(e){
 e.preventDefault();
@@ -140,7 +141,8 @@ return (
             </div>     
 
         <div className='cards'>
-            {currentRecipes.map((e) => {
+            { 
+            currentRecipes?.map( e => {
                 return (
                     <div key={e.id}>
                     <Link to={'/recipes/' + e.id}>
