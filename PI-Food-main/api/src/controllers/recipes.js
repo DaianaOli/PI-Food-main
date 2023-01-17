@@ -42,7 +42,6 @@ const getAllRecipes = async () => {
     const apiInfo = await getApiInfo()
     const dbInfo = await getDBInfo()
     const allRecipes = [...apiInfo,...dbInfo]
-    if (allRecipes.length === 0) return 'No se encontraron recetas'
     return allRecipes
 }
 
