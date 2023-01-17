@@ -27,7 +27,12 @@ export default function Home() {
   const [recipesPerPage, setrecipesPerPage] = useState(9);
   const indexLastRecipe = currentPage * recipesPerPage; // | --> esto es para el paginado
   const indexFirstRecipe = indexLastRecipe - recipesPerPage; // |
-  const currentRecipes = allRecipes.slice(indexFirstRecipe, indexLastRecipe); // |
+  var currentRecipes;
+  if (allRecipes.length > 0) {
+    currentRecipes = allRecipes.slice(indexFirstRecipe, indexLastRecipe); // | --> esto es para el paginado
+   } else {
+    currentRecipes = allRecipes
+   }
 
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
