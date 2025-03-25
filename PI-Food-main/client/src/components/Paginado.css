@@ -1,4 +1,4 @@
-.paginado{
+.paginado {
     display: flex;
     flex-direction: row;
     padding: 1px;
@@ -6,32 +6,56 @@
     margin-top: 2%;
     align-content: space-around;
     justify-content: center;
- 
-}
-
-.num{
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.ul{
+  }
+  
+  .ul {
     list-style-type: none;
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 15px; /* Espacio entre números de página */
     font-weight: bold;
     color: rgb(24, 24, 24);
-}
-.container {
+    margin: 0;
+  }
+  
+  .container {
     cursor: pointer;
     background: #0b0c0c;
     border-radius: 15px;
     font-style: italic;
     color: #ffffff;
     font-size: 15px;
-    padding: 9px 23px 9px 23px;
+    padding: 9px 23px;
     text-decoration: none;
-    position:relative;
+    position: relative;
     border: #ffffff 1px solid;
-}
+    transition: background 0.3s ease;
+  }
+  
+  .container:hover {
+    background: #d8e66c;
+    text-decoration: none;
+  }
+  
+  @media (max-width: 768px) {
+    .ul {
+      gap: 10px; /* Reducir espacio entre números en pantallas medianas */
+    }
+  
+    .container {
+      font-size: 14px; /* Reducir tamaño de texto */
+      padding: 8px 16px; /* Reducir padding */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .ul {
+      gap: 5px; /* Aumentar la cercanía entre números en pantallas pequeñas */
+    }
+  
+    .container {
+      font-size: 12px; /* Reducir aún más el tamaño de texto */
+      padding: 6px 12px; /* Reducir padding */
+    }
+  }
+  

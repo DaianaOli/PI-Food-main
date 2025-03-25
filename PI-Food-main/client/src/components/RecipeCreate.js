@@ -109,7 +109,7 @@ function handleStep (e){
             <Link to ='/home' ><button className='btn'>Back to the main page</button></Link>
             <h1 className='h1'>Create you recipe</h1>
             <form onSubmit={(e) => {handleSubmit(e)}} className='form'>
-                <div>
+                <div className="inputs">
                     <label>Name:</label>
                     <input
                     type='text'
@@ -121,7 +121,7 @@ function handleStep (e){
                         <p className='error'>{errors.title}</p>
                     ) }
                 </div>
-                <div>
+                <div className="inputs">
                     <label>Summary:</label>
                     <input
                     type='text'
@@ -133,7 +133,7 @@ function handleStep (e){
                         <p className='error'>{errors.summary}</p>
                     ) }
                 </div>
-                <div>
+                <div className="inputs">
                     <label>HealthScore:</label>
                     <input
                     type='text'
@@ -145,7 +145,7 @@ function handleStep (e){
                         <p className='error'>{errors.healthScore}</p>
                     ) }
                 </div>
-                <div>
+                <div className="inputs">
                     <label>Step by step:</label>
                     <input
                     type='text'
